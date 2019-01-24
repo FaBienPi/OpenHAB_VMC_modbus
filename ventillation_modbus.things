@@ -1,0 +1,81 @@
+Bridge modbus:serial:VMCDomeoUSB [port="/dev/ttyUSB0", baud=19200, stopBits="1.0", parity="even", dataBits=8, encoding="rtu"] {
+
+    // read-write for coils. Reading 9 coils, with index 2, 3, 4, 6, 7, 8, 9, 12 and 13.
+    // These correspond to input register numbers 000002, 000003, ..., 0000013.
+    Bridge poller coils [ start=2, length=12, refresh=1000, type="coil" ] {
+        Thing data coils2 [ readStart="2", readValueType="bit", writeStart="2", writeValueType="bit", writeType="coil" ]
+        Thing data coils3 [ readStart="3", readValueType="bit", writeStart="3", writeValueType="bit", writeType="coil" ]
+        Thing data coils4 [ readStart="4", readValueType="bit", writeStart="4", writeValueType="bit", writeType="coil" ]
+        Thing data coils6 [ readStart="6", readValueType="bit", writeStart="6", writeValueType="bit", writeType="coil" ]
+        Thing data coils7 [ readStart="7", readValueType="bit", writeStart="7", writeValueType="bit", writeType="coil" ]
+        Thing data coils8 [ readStart="8", readValueType="bit", writeStart="8", writeValueType="bit", writeType="coil" ]
+        Thing data coils9 [ readStart="9", readValueType="bit", writeStart="9", writeValueType="bit", writeType="coil" ]
+        Thing data coils12 [ writeStart="12", writeValueType="bit", writeType="coil" ]
+        Thing data coils13 [ writeStart="13", writeValueType="bit", writeType="coil" ]
+    }
+    // read-write for holding registers. Reading 17 registers, with index 0, 1, 8, 9, 10, 11, 15, 16, 17, 22, 23, 24, 25, 26, 27, 28, 31.
+    // These correspond to input register numbers 400000, 400001, ..., 400031.
+    Bridge poller holding [ start=0, length=32, refresh=1000, type="holding" ] {
+        Thing data holding0 [ readStart="0", readValueType="int16", writeStart="0", writeValueType="int16", writeType="holding" ]
+        Thing data holding1 [ readStart="1", readValueType="int16", writeStart="1", writeValueType="int16", writeType="holding" ]
+        Thing data holding8 [ readStart="8", readValueType="int16", writeStart="8", writeValueType="int16", writeType="holding" ]
+        Thing data holding9 [ readStart="9", readValueType="int16", writeStart="9", writeValueType="int16", writeType="holding" ]
+        Thing data holding10 [ readStart="10", readValueType="int16", writeStart="10", writeValueType="int16", writeType="holding" ]
+        Thing data holding11 [ readStart="11", readValueType="int16", writeStart="11", writeValueType="int16", writeType="holding" ]
+        Thing data holding15 [ readStart="15", readValueType="int16", writeStart="15", writeValueType="int16", writeType="holding" ]
+        Thing data holding16 [ readStart="16", readValueType="int16", writeStart="16", writeValueType="int16", writeType="holding" ]
+        Thing data holding17 [ readStart="17", readValueType="int16", writeStart="17", writeValueType="int16", writeType="holding" ]
+        Thing data holding22 [ readStart="22", readValueType="int16", writeStart="22", writeValueType="int16", writeType="holding" ]
+        Thing data holding23 [ readStart="23", readValueType="int16", writeStart="23", writeValueType="int16", writeType="holding" ]
+        Thing data holding24 [ readStart="24", readValueType="int16", writeStart="24", writeValueType="int16", writeType="holding" ]
+        Thing data holding25 [ readStart="25", readValueType="int16", writeStart="25", writeValueType="int16", writeType="holding" ]
+        Thing data holding26 [ readStart="26", readValueType="int16", writeStart="26", writeValueType="int16", writeType="holding" ]
+        Thing data holding27 [ readStart="27", readValueType="int16", writeStart="27", writeValueType="int16", writeType="holding" ]
+        Thing data holding28 [ readStart="28", readValueType="int16", writeStart="28", writeValueType="int16", writeType="holding" ]
+        Thing data holding31 [ readStart="31", readValueType="int16", writeStart="31", writeValueType="int16", writeType="holding" ]
+    }
+    // read-only for input registers. Reading 25 registers, with index 
+    // These correspond to input register numbers 300006, 300007, ..., 300040.
+    Bridge poller inputRegisters [ start=6, length=35, refresh=1000, type="input" ] {
+        Thing data inreg6 [ readStart="6", readValueType="int16" ]
+        Thing data inreg7 [ readStart="7", readValueType="int16" ]
+        Thing data inreg8 [ readStart="8", readValueType="int16" ]
+        Thing data inreg9 [ readStart="9", readValueType="int16" ]
+        Thing data inreg10 [ readStart="10", readValueType="int16" ]
+        Thing data inreg12 [ readStart="12", readValueType="int16" ]
+        Thing data inreg13 [ readStart="13", readValueType="int16" ]
+        Thing data inreg14 [ readStart="14", readValueType="int16" ]
+        Thing data inreg15 [ readStart="15", readValueType="int16" ]
+        Thing data inreg16 [ readStart="16", readValueType="int16" ]
+        Thing data inreg17 [ readStart="17", readValueType="int16" ]
+        Thing data inreg19 [ readStart="19", readValueType="int16" ]
+        Thing data inreg20 [ readStart="20", readValueType="int16" ]
+        Thing data inreg21 [ readStart="21", readValueType="int16" ]
+        Thing data inreg22 [ readStart="22", readValueType="int16" ]
+        Thing data inreg23 [ readStart="23", readValueType="int16" ]
+        Thing data inreg24 [ readStart="24", readValueType="int16" ]
+        Thing data inreg25 [ readStart="25", readValueType="int16" ]
+        Thing data inreg26 [ readStart="26", readValueType="int16" ]
+        Thing data inreg27 [ readStart="27", readValueType="int16" ]
+        Thing data inreg36 [ readStart="36", readValueType="int16" ]
+        Thing data inreg37 [ readStart="37", readValueType="int16" ]
+        Thing data inreg38 [ readStart="38", readValueType="int16" ]
+        Thing data inreg39 [ readStart="39", readValueType="int16" ]
+        Thing data inreg40 [ readStart="40", readValueType="int16" ]
+    }
+
+    // read-only for discrete inputs. Reading 10 discrete inputs, with index 1, 2, 5, 6, 7, 10, 11, 12, 13 and 14.
+    // These correspond to input register numbers 100001, 100002, ..., 100014.
+    Bridge poller discreteInputs [ start=1, length=14, refresh=1000, type="discrete" ] {
+        Thing data di1 [ readStart="1", readValueType="bit" ]
+        Thing data di2 [ readStart="2", readValueType="bit" ]
+        Thing data di5 [ readStart="5", readValueType="bit" ]
+        Thing data di6 [ readStart="6", readValueType="bit" ]
+        Thing data di7 [ readStart="7", readValueType="bit" ]
+        Thing data di10 [ readStart="10", readValueType="bit" ]
+        Thing data di11 [ readStart="11", readValueType="bit" ]
+        Thing data di12 [ readStart="12", readValueType="bit" ]
+        Thing data di13 [ readStart="13", readValueType="bit" ]
+        Thing data di14 [ readStart="14", readValueType="bit" ]
+    }
+}

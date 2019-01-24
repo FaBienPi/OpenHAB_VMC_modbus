@@ -1,0 +1,65 @@
+sitemap ventillation label="Ventillation" {
+	Text label="Ventilation" icon="fan"{
+		Text item=Domeo_Version
+		Text item=Domeo_FreeContact
+		Text item=Domeo_Defrost
+		Text item=Domeo_extract_motor_state
+		Text item=Domeo_input_motor_state
+		Text item=Domeo_inside_temperature_sensor_state
+		Text item=Domeo_outside_temperature_sensor_state
+		Text item=Domeo_extract_temperature_sensor_state
+		Text item=Domeo_input_temperature_sensor_state
+		Text item=Domeo_alarm_filters_state
+		Switch item=Domeo_preheating_battery mappings=[0="Not installed", 1="Installed"]
+		Switch item=Domeo_postheating_battery mappings=[0="Not installed", 1="Installed"]
+		Switch item=Domeo_sense_of_switch mappings=[0="Normallement ouvert", 1="Normallement fermé"]
+		Switch item=Domeo_selection_of_version mappings=[0="Standard & absence", 1="Bas & medium & boost"]
+		Switch item=Domeo_activation_mode_absence mappings=[0="Standby/absence ON", 1="Standby/absence OFF"]
+		Switch item=Domeo_bypass_auto_control mappings=[0="Activé", 1="Désactivé"]
+		Switch item=Domeo_bypass_manual_control mappings=[0="Activé", 1="Désactivé"]
+		Switch item=Domeo_reset_filter_alarm mappings=[0="Activé", 1="Reset erreur"]
+		Switch item=Domeo_reset_factory_parameters mappings=[0="Activé", 1="Erreur"]
+		Text item=Domeo_software_version_main_electronic
+		Text item=Domeo_software_version_remote_control
+		Text item=Domeo_software_version_programmation_unit
+		Text item=Domeo_type_of_heat_recovery
+		Text item=Domeo_type_of_control 
+		Text item=Domeo_dephasage_des_debits
+		Text item=Domeo_low_airflow
+		Text item=Domeo_temporized_boost
+		Text item=Domeo_free_cooling
+		Text item=Domeo_current_airflow
+		Text item=Domeo_power_0_10V
+		Text item=Domeo_extract_motor_speed
+		Default item=Domeo_input_motor_speed
+		Text item=Domeo_temperature_Tint
+		Text item=Domeo_temperature_Tout
+		Text item=Domeo_temperature_Text
+		Text item=Domeo_temperature_Tinp
+		Text item=Domeo_state_of_bypass
+		Text item=Domeo_state_of_pre_heating_battery
+		Text item=Domeo_state_of_post_heating_battery
+		Text item=Domeo_filter_alarm
+		Text item=Domeo_temperature_Tin_pre_heating_battery
+		Text item=Domeo_temperature_Tout_pre_heating_battery
+		Text item=Domeo_temperature_Tin_post_heating_battery
+		Text item=Domeo_temperature_Tout_post_heating_battery
+		Text item=Domeo_modbus_network_nude
+		Selection item=Domeo_modbus_network_baudrate mappings=[5="4 800", 6="9 600", 8="19 200", 10="38 400"]
+		Setpoint item=Domeo_unbalance_airflow_selection minValue=-15 maxValue=15 step=1
+		Setpoint item=Domeo_low_airflow_setting minValue=60 maxValue=210 step=10
+		Setpoint item=Domeo_temporised_05h_boost_airflow_setting minValue=60 maxValue=210 step=10
+		Setpoint item=Domeo_freecooling_airflow_setting minValue=60 maxValue=210 step=10
+		Switch item=Domeo_airflow_selection mappings=[0="Faible", 1="Medium/boost", 2="Boost (German)"]
+		Setpoint item=Domeo_minimum_set_0_10V minValue=60 maxValue=210 step=5
+		Setpoint item=Domeo_maximum_setting_0_10V minValue=60 maxValue=210 step=5
+		Setpoint item=Domeo_bypass_auto_Text_mini minValue=10 maxValue=30 step=1
+		Setpoint item=Domeo_bypass_auto_Tint_mini minValue=10 maxValue=30 step=1
+		Setpoint item=Domeo_timer minValue=1 maxValue=20 step=1
+		Setpoint item=Domeo_preheating_battery_Temp_ON minValue=0 maxValue=20 step=1
+		Setpoint item=Domeo_preheating_battery_Temp_OFF minValue=10 maxValue=30 step=1
+		Setpoint item=Domeo_preheating_battery_constant_Temp minValue=0 maxValue=30 step=1
+		Setpoint item=Domeo_postheating_battery_constant_Temp minValue=0 maxValue=30 step=1
+		Setpoint item=Domeo_timer_filter_alarm_set minValue=1 maxValue=24 step=1
+	}
+}

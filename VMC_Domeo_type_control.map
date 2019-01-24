@@ -1,0 +1,8 @@
+0=Pression constante
+1=Débit constant
+2=Vitesse constante
+3=Proportionnel par humidité
+4=Proportionnel par 0-10V
+5=Switch (ON/OFF)
+-=N.A.
+NULL=-
