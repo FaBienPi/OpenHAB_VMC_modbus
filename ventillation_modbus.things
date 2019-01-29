@@ -1,8 +1,9 @@
 Bridge modbus:serial:VMCDomeoUSB [port="/dev/ttyUSB0", baud=19200, stopBits="1.0", parity="even", dataBits=8, encoding="rtu"] {
 
-    // read-write for coils. Reading 9 coils, with index 2, 3, 4, 6, 7, 8, 9, 12 and 13.
-    // These correspond to input register numbers 000002, 000003, ..., 0000013.
-    Bridge poller coils [ start=2, length=12, refresh=1000, type="coil" ] {
+    // read-write for coils. Reading 11 coils, with index 1, 2, 3, 4, 6, 7, 8, 9, 12, 13 and 14.
+    // These correspond to input register numbers 000002, 000003, ..., 0000014.
+    Bridge poller coils [ start=1, length=13, refresh=1000, type="coil" ] {
+        Thing data coils1 [ readStart="1", readValueType="bit", writeStart="1", writeValueType="bit", writeType="coil" ]
         Thing data coils2 [ readStart="2", readValueType="bit", writeStart="2", writeValueType="bit", writeType="coil" ]
         Thing data coils3 [ readStart="3", readValueType="bit", writeStart="3", writeValueType="bit", writeType="coil" ]
         Thing data coils4 [ readStart="4", readValueType="bit", writeStart="4", writeValueType="bit", writeType="coil" ]
@@ -12,12 +13,14 @@ Bridge modbus:serial:VMCDomeoUSB [port="/dev/ttyUSB0", baud=19200, stopBits="1.0
         Thing data coils9 [ readStart="9", readValueType="bit", writeStart="9", writeValueType="bit", writeType="coil" ]
         Thing data coils12 [ writeStart="12", writeValueType="bit", writeType="coil" ]
         Thing data coils13 [ writeStart="13", writeValueType="bit", writeType="coil" ]
+        Thing data coils14 [ readStart="14", readValueType="bit", writeStart="14", writeValueType="bit", writeType="coil" ]
     }
-    // read-write for holding registers. Reading 17 registers, with index 0, 1, 8, 9, 10, 11, 15, 16, 17, 22, 23, 24, 25, 26, 27, 28, 31.
-    // These correspond to input register numbers 400000, 400001, ..., 400031.
-    Bridge poller holding [ start=0, length=32, refresh=1000, type="holding" ] {
+    // read-write for holding registers. Reading 20 registers, with index 0, 1, 8, 9, 10, 11, 15, 16, 17, 22, 23, 24, 25, 26, 27, 28, 31, 32, 33.
+    // These correspond to input register numbers 400000, 400001, ..., 400033.
+    Bridge poller holding [ start=0, length=34, refresh=1000, type="holding" ] {
         Thing data holding0 [ readStart="0", readValueType="int16", writeStart="0", writeValueType="int16", writeType="holding" ]
         Thing data holding1 [ readStart="1", readValueType="int16", writeStart="1", writeValueType="int16", writeType="holding" ]
+        Thing data holding2 [ readStart="2", readValueType="int16", writeStart="2", writeValueType="int16", writeType="holding" ]
         Thing data holding8 [ readStart="8", readValueType="int16", writeStart="8", writeValueType="int16", writeType="holding" ]
         Thing data holding9 [ readStart="9", readValueType="int16", writeStart="9", writeValueType="int16", writeType="holding" ]
         Thing data holding10 [ readStart="10", readValueType="int16", writeStart="10", writeValueType="int16", writeType="holding" ]
@@ -33,6 +36,8 @@ Bridge modbus:serial:VMCDomeoUSB [port="/dev/ttyUSB0", baud=19200, stopBits="1.0
         Thing data holding27 [ readStart="27", readValueType="int16", writeStart="27", writeValueType="int16", writeType="holding" ]
         Thing data holding28 [ readStart="28", readValueType="int16", writeStart="28", writeValueType="int16", writeType="holding" ]
         Thing data holding31 [ readStart="31", readValueType="int16", writeStart="31", writeValueType="int16", writeType="holding" ]
+        Thing data holding32 [ readStart="32", readValueType="int16", writeStart="32", writeValueType="int16", writeType="holding" ]
+        Thing data holding33 [ readStart="33", readValueType="int16", writeStart="33", writeValueType="int16", writeType="holding" ]
     }
     // read-only for input registers. Reading 25 registers, with index 
     // These correspond to input register numbers 300006, 300007, ..., 300040.
