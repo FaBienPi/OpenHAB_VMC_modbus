@@ -1,5 +1,8 @@
 0=OFF
 1=ON
-2=Erreur
+2=Erreur sonde température 1
+3=Erreur sonde température 1
+4=Erreur TRIAC
+5=Erreur protection thermique
 -=N.A.
 NULL=-
