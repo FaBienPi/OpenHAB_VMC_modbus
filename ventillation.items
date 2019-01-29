@@ -18,6 +18,7 @@ Number Domeo_input_temperature_sensor_state "Etat jauge température entrée [MA
 Number Domeo_alarm_filters_state "Etat fitres" (Domeo) { channel="modbus:data:VMCDomeoUSB:discreteInputs:di14:number" } //0 OFF - 1 ON
 
 // Coils (read and write or write only)
+Number Domeo_air_quality_sensor "Sonde qualité air" (Domeo) { channel="modbus:data:VMCDomeoUSB:coils:coils1:number" } // 0 not installed - 1 installed
 Number Domeo_preheating_battery "Batterie pré-chauffage" (Domeo) { channel="modbus:data:VMCDomeoUSB:coils:coils2:number" } // 0 not installed - 1 installed
 Number Domeo_postheating_battery "Batterie post-chauffage" (Domeo) { channel="modbus:data:VMCDomeoUSB:coils:coils3:number" } // 0 not installed - 1 installed
 Number Domeo_sense_of_switch "Branchement contact libre" (Domeo) { channel="modbus:data:VMCDomeoUSB:coils:coils4:number" } // 0 normally open - 1 normally closed
@@ -27,6 +28,7 @@ Number Domeo_bypass_auto_control "Contrôle automatique du by-pass" (Domeo) { ch
 Number Domeo_bypass_manual_control "Contrôle manuel du by-pass" (Domeo) { channel="modbus:data:VMCDomeoUSB:coils:coils9:number" } // 0 desactivated - 1 activated
 Number Domeo_reset_filter_alarm "Reset alarme filtre" (Domeo) { channel="modbus:data:VMCDomeoUSB:coils:coils12:number" } // 0 activated - 1 error reset
 Number Domeo_reset_factory_parameters "Reset paramètre d'usine" (Domeo) { channel="modbus:data:VMCDomeoUSB:coils:coils13:number" } // 0 activated - 1 error
+Number Domeo_Defrost_type "Type dégivrage" (Domeo) { channel="modbus:data:VMCDomeoUSB:coils:coils14:number" } // 0 DIBT - 1 Passivhaus
 
 // Input registers (read only)
 Number Domeo_software_version_main_electronic "Version logiciel VMC" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg6:number" } // 0-999 software version
@@ -42,13 +44,13 @@ Number Domeo_current_airflow "Débit actuel [%s m3/h]" (Domeo) { channel="modbus
 Number Domeo_power_0_10V "Puissance 0-10V: [%s mV]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg17:number" } // mV
 Number Domeo_extract_motor_speed "Vitesse moteur extraction [%s RPM]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg19:number" } // RPM
 Number Domeo_input_motor_speed "Vitesse moteur entrée [%s RPM]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg20:number" } // RPM
-Number Domeo_temperature_Tint "Température extraction [JS(VMC_temperature.js):%.2f °C]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg21:number" } // inside temperature (°C)
-Number Domeo_temperature_Tout "Température insuflation [JS(VMC_temperature.js):%.2f °C]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg22:number" } // outisde temperature (°C)
-Number Domeo_temperature_Text "Température air neuf [JS(VMC_temperature.js):%.2f °C]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg23:number" } // extract temperature (°C)
-Number Domeo_temperature_Tinp "Température rejet [JS(VMC_temperature.js):%.2f °C]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg24:number" } // input temperature (°C)
+Number Domeo_temperature_Tint "Température extraction [JS(VMC_temperature.js):%.2f °C]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg21:number" } // inside temperature (°dC)
+Number Domeo_temperature_Tout "Température insuflation [JS(VMC_temperature.js):%.2f °C]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg22:number" } // outisde temperature (°dC)
+Number Domeo_temperature_Text "Température air neuf [JS(VMC_temperature.js):%.2f °C]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg23:number" } // extract temperature (°dC)
+Number Domeo_temperature_Tinp "Température rejet [JS(VMC_temperature.js):%.2f °C]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg24:number" } // input temperature (°dC)
 Number Domeo_state_of_bypass "Etat du by-pass [MAP(VMC_Domeo_bypass.map):%s]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg25:number" } // O desactivated - 1 activated - 2 error
-Number Domeo_state_of_pre_heating_battery "Etat batterie pré-chauffage [MAP(VMC_Domeo_battery.map):%s]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg26:number" } // 0 OFF - 1 ON - 2 error
-Number Domeo_state_of_post_heating_battery "Etat batterie post-chauffage [MAP(VMC_Domeo_battery.map):%s]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg27:number" } //0 OFF - 1 ON - 2 error
+Number Domeo_state_of_pre_heating_battery "Etat batterie pré-chauffage [MAP(VMC_Domeo_battery.map):%s]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg26:number" } // 0 OFF - 1 ON - 2 error sensor temp 1 - 3 error sensor temp 2 - 4 error Triac - 5 error thermal protection
+Number Domeo_state_of_post_heating_battery "Etat batterie post-chauffage [MAP(VMC_Domeo_battery.map):%s]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg27:number" } //0 OFF - 1 ON - 2 error sensor temp 1 - 3 error sensor temp 2 - 4 error Triac - 5 error thermal protection
 Number Domeo_filter_alarm "Configuration alarme filtre [%s mois]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg36:number" } // months
 Number Domeo_temperature_Tin_pre_heating_battery "Température Tin pré-chauffage [%.2f °C]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg37:number" } // incoming temperature pre-heating battery (°C)
 Number Domeo_temperature_Tout_pre_heating_battery "Température Tout pré-chauffage [%.2f °C]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg38:number" } //output temperature pre-heating battery (°C)
@@ -56,8 +58,9 @@ Number Domeo_temperature_Tin_post_heating_battery "Température Tin post-chauffa
 Number Domeo_temperature_Tout_post_heating_battery "Température Tout post-chauffage [%.2f °C]" (Domeo) { channel="modbus:data:VMCDomeoUSB:inputRegisters:inreg40:number" } // output temperature post-heating battery (°C)
 
 // Holding registers (read and write)
-Number Domeo_modbus_network_nude "Modbus netwrok nude [%s]" (Domeo) { channel="modbus:data:VMCDomeoUSB:holding:holding0:number" }
+Number Domeo_modbus_network_node "Modbus network node [%s]" (Domeo) { channel="modbus:data:VMCDomeoUSB:holding:holding0:number" }
 Number Domeo_modbus_network_baudrate "Baudrate modbus" (Domeo) { channel="modbus:data:VMCDomeoUSB:holding:holding1:number" } // 5 4800 - 6 9600 - 8 19200 - 10 38400
+Number Domeo_modbus_parity "Parité modbus" (Domeo) { channel="modbus:data:VMCDomeoUSB:holding:holding2:number" } // 0 no parity (2 bits de stop) - 1 odd - 2 even
 Number Domeo_unbalance_airflow_selection "Unbalance airflow selection [%s %%]" (Domeo) { channel="modbus:data:VMCDomeoUSB:holding:holding8:number" } // step of 1% from -15% to +15%
 Number Domeo_low_airflow_setting "Faible débit" (Domeo) { channel="modbus:data:VMCDomeoUSB:holding:holding9:number" } // m3/h
 Number Domeo_temporised_05h_boost_airflow_setting "Débit boost temporisé" (Domeo) { channel="modbus:data:VMCDomeoUSB:holding:holding10:number" } // m3/h
@@ -73,3 +76,5 @@ Number Domeo_preheating_battery_Temp_OFF "Temp extinction pré-chauffage [%.2f �
 Number Domeo_preheating_battery_constant_Temp "Pre-heating battery constant T° [%.2f °C]" (Domeo) { channel="modbus:data:VMCDomeoUSB:holding:holding27:number" }
 Number Domeo_postheating_battery_constant_Temp "Post-heating battery constant T° [%.2f °C]" (Domeo) { channel="modbus:data:VMCDomeoUSB:holding:holding28:number" }
 Number Domeo_timer_filter_alarm_set "Timer changement de filtre [%s mois]" (Domeo) { channel="modbus:data:VMCDomeoUSB:holding:holding31:number" }
+Number Domeo_min_voltage_0_10V "Minimum tension 0-10V" (Domeo) { channel="modbus:data:VMCDomeoUSB:holding:holding32:number" }
+Number Domeo_max_voltage_0_10V "Maximum tension 0-10V" (Domeo) { channel="modbus:data:VMCDomeoUSB:holding:holding33:number" }
