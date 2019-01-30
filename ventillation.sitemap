@@ -1,5 +1,6 @@
 sitemap ventillation label="Ventillation" {
-	Text label="Ventilation" icon="fan"{
+Text label="Ventilation" icon="fan"{
+		Frame label="Discretes input"{
 		Text item=Domeo_Version
 		Text item=Domeo_FreeContact
 		Text item=Domeo_Defrost
@@ -10,6 +11,8 @@ sitemap ventillation label="Ventillation" {
 		Text item=Domeo_extract_temperature_sensor_state
 		Text item=Domeo_input_temperature_sensor_state
 		Text item=Domeo_alarm_filters_state
+		}
+		Frame label="Coils"{
 		Switch item=Domeo_air_quality_sensor mappings=[0="Not installed", 1="Installed"]
 		Switch item=Domeo_preheating_battery mappings=[0="Not installed", 1="Installed"]
 		Switch item=Domeo_postheating_battery mappings=[0="Not installed", 1="Installed"]
@@ -21,6 +24,8 @@ sitemap ventillation label="Ventillation" {
 		Switch item=Domeo_reset_filter_alarm mappings=[0="Activé", 1="Reset erreur"]
 		Switch item=Domeo_reset_factory_parameters mappings=[0="Activé", 1="Erreur"]
 		Text item=Domeo_Defrost_type
+		}
+		Frame label="Input registers"{
 		Text item=Domeo_software_version_main_electronic
 		Text item=Domeo_software_version_remote_control
 		Text item=Domeo_software_version_programmation_unit
@@ -46,14 +51,16 @@ sitemap ventillation label="Ventillation" {
 		Text item=Domeo_temperature_Tout_pre_heating_battery
 		Text item=Domeo_temperature_Tin_post_heating_battery
 		Text item=Domeo_temperature_Tout_post_heating_battery
-		Setpoint item=Domeo_modbus_network_nOde minValue=1 maxValue=247 step=1
+		}
+		Frame label="Holding registers"{
+		Setpoint item=Domeo_modbus_network_node minValue=1 maxValue=247 step=1
 		Selection item=Domeo_modbus_network_baudrate mappings=[5="4 800", 6="9 600", 8="19 200", 10="38 400"]
 		Selection item=Domeo_modbus_parity mappings=[0="no parity", 1="odd", 2="even"]
 		Setpoint item=Domeo_unbalance_airflow_selection minValue=-15 maxValue=15 step=1
 		Setpoint item=Domeo_low_airflow_setting minValue=60 maxValue=210 step=10
 		Setpoint item=Domeo_temporised_05h_boost_airflow_setting minValue=60 maxValue=210 step=10
 		Setpoint item=Domeo_freecooling_airflow_setting minValue=60 maxValue=210 step=10
-		Switch item=Domeo_airflow_selection mappings=[0="Faible", 1="Medium/boost", 2="Boost (German)"]
+		Selection item=Domeo_airflow_selection mappings=[0="Faible", 1="Medium/boost", 2="Boost (German)"]
 		Setpoint item=Domeo_minimum_set_0_10V minValue=60 maxValue=210 step=5
 		Setpoint item=Domeo_maximum_setting_0_10V minValue=60 maxValue=210 step=5
 		Setpoint item=Domeo_bypass_auto_Text_mini minValue=10 maxValue=30 step=1
@@ -64,7 +71,8 @@ sitemap ventillation label="Ventillation" {
 		Setpoint item=Domeo_preheating_battery_constant_Temp minValue=0 maxValue=30 step=1
 		Setpoint item=Domeo_postheating_battery_constant_Temp minValue=0 maxValue=30 step=1
 		Setpoint item=Domeo_timer_filter_alarm_set minValue=1 maxValue=24 step=1
-		Setpoint item=Domeo_min_voltage_0_10V minValue=0 maxValue=9 step=0,1
-		Setpoint item=Domeo_max_voltage_0_10V minValue=1 maxValue=10 step=0,1
+		Setpoint item=Domeo_min_voltage_0_10V minValue=0 maxValue=9 step=0.1
+		Setpoint item=Domeo_max_voltage_0_10V minValue=1 maxValue=10 step=0.1
+		}
 	}
 }
